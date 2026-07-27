@@ -17,7 +17,7 @@ import (
 
 func main() {
 	client := lark.NewClient(os.Getenv("APP_ID"), os.Getenv("APP_SECRET"))
-	handler := dispatcher.NewEventDispatcher("", os.Getenv("TOKEN"))
+	handler := dispatcher.NewEventDispatcher(os.Getenv("TOKEN"), "")
 	handler = handler.OnP2MessageReceiveV1(func(ctx context.Context, event *larkim.P2MessageReceiveV1) error {
 		fmt.Printf("[OnP2MessageReceiveV1 access], data: %s\n", larkcore.Prettify(event))
 
